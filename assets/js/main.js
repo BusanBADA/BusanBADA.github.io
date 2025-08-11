@@ -227,3 +227,26 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+window.addEventListener('load', () => {
+    const swiperElement = document.querySelector('.portfolio-details-slider');
+    if (!swiperElement) return;
+
+    const swiperInstance = swiperElement.swiper;
+    if (!swiperInstance) return;
+
+    const videoIframe = document.getElementById('video-slide');
+    if (!videoIframe) return;
+
+    swiperInstance.on('slideChange', () => {
+        const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+
+        if (activeSlide.contains(videoIframe)) {
+            swiperInstance.autoplay.stop();
+            swiperInstance.allowTouchMove = true;
+        } else {
+            swiperInstance.autoplay.start();
+            swiperInstance.allowTouchMove = true;
+        }
+    });
+});
