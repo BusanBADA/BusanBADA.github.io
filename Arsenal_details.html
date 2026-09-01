@@ -1,231 +1,1639 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - Arsenal</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <title>Arsenal | Jang WooYoung</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <style>
+                :root {
+                    --bg: #12141A;
+                    --surface: #191C23;
+                    --surface2: #1F232C;
+                    --border: #262A33;
+                    --text: #ECEDEF;
+                    --muted: #8890A0;
+                    --gold: #E8B54D;
+                    --blue: #5B8DEF;
+                    --mono: 'IBM Plex Mono',monospace;
+                    --sans: 'Inter',sans-serif;
+                }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+                * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+                html {
+                    scroll-behavior: smooth;
+                }
+
+                body {
+                    background: var(--bg);
+                    color: var(--text);
+                    font-family: var(--sans);
+                    line-height: 1.65;
+                    -webkit-font-smoothing: antialiased;
+                }
+
+                a {
+                    color: inherit;
+                    text-decoration: none;
+                }
+
+                .wrap {
+                    max-width: 1080px;
+                    margin: 0 auto;
+                    padding: 0 32px;
+                }
+
+
+                /* =========================
+             NAV
+          ========================= */
+
+                header {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 100;
+                    background: rgba(18,20,26,.9);
+                    backdrop-filter: blur(10px);
+                    border-bottom: 1px solid var(--border);
+                }
+
+                .navbar {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 18px 32px;
+                    max-width: 1080px;
+                    margin: 0 auto;
+                }
+
+                .logo {
+                    font-family: var(--mono);
+                    font-weight: 700;
+                    font-size: 14.5px;
+                }
+
+                    .logo span {
+                        color: var(--gold);
+                    }
+
+                nav.links {
+                    display: flex;
+                    gap: 34px;
+                }
+
+                    nav.links a {
+                        font-family: var(--mono);
+                        font-size: 12.5px;
+                        color: var(--muted);
+                        transition: .2s;
+                    }
+
+                        nav.links a:hover {
+                            color: var(--text);
+                        }
+
+                .back-btn {
+                    font-family: var(--mono);
+                    font-size: 12px;
+                    border: 1px solid var(--border);
+                    padding: 9px 16px;
+                    border-radius: 4px;
+                    transition: .2s;
+                }
+
+                    .back-btn:hover {
+                        border-color: var(--gold);
+                        color: var(--gold);
+                    }
+
+
+                /* =========================
+             HERO
+          ========================= */
+
+                .project-hero {
+                    padding-top: 170px;
+                    padding-bottom: 90px;
+                }
+
+                .eyebrow {
+                    font-family: var(--mono);
+                    font-size: 12px;
+                    letter-spacing: .08em;
+                    color: var(--gold);
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 18px;
+                }
+
+                    .eyebrow::before {
+                        content: "";
+                        width: 20px;
+                        height: 1px;
+                        background: var(--gold);
+                    }
+
+                .project-hero h1 {
+                    font-family: var(--mono);
+                    font-size: clamp(42px,7vw,76px);
+                    line-height: 1;
+                    margin-bottom: 20px;
+                }
+
+                .project-subtitle {
+                    font-size: 19px;
+                    color: var(--muted);
+                    max-width: 760px;
+                }
+
+                .project-meta {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    margin-top: 30px;
+                }
+
+                .meta-tag {
+                    font-family: var(--mono);
+                    font-size: 11px;
+                    border: 1px solid var(--border);
+                    padding: 7px 11px;
+                    border-radius: 4px;
+                    color: var(--muted);
+                }
+
+
+                /* =========================
+             MAIN PROJECT
+          ========================= */
+
+                .project-layout {
+                    display: grid;
+                    grid-template-columns: minmax(0, 1.65fr) minmax(260px, .8fr);
+                    gap: 56px;
+                    padding-bottom: 120px;
+                }
+
+
+                /* =========================
+             MEDIA
+          ========================= */
+
+                .media-section {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 18px;
+                }
+
+                .main-video {
+                    width: 100%;
+                    aspect-ratio: 16/9;
+                    background: #000;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+
+                    .main-video iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                        display: block;
+                    }
+
+
+                /* =========================
+             IMAGE GALLERY
+          ========================= */
+
+                .gallery {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 14px;
+                }
+
+                .gallery-item {
+                    border: 1px solid var(--border);
+                    border-radius: 6px;
+                    overflow: hidden;
+                    background: var(--surface);
+                }
+
+                    .gallery-item img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                        cursor: zoom-in;
+                        transition: transform .3s;
+                    }
+
+                    .gallery-item:hover img {
+                        transform: scale(1.025);
+                    }
+
+                /* =========================
+           VIDEO GALLERY
+        ========================= */
+
+                .video-gallery-item {
+                    aspect-ratio: 16/9;
+                    position: relative;
+                    cursor: pointer;
+                    background: #000;
+                }
+
+                .video-thumbnail {
+                    width: 100%;
+                    height: 100%;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                    .video-thumbnail iframe {
+                        width: 100%;
+                        height: 100%;
+                        border: 0;
+                        pointer-events: none;
+                    }
+
+                .video-play {
+                    position: absolute;
+                    inset: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 32px;
+                    color: #fff;
+                    background: rgba(0,0,0,.25);
+                    transition: .2s;
+                }
+
+                .video-gallery-item:hover .video-play {
+                    background: rgba(0,0,0,.45);
+                    color: var(--gold);
+                }
+
+
+                /* =========================
+           VIDEO LIGHTBOX
+        ========================= */
+
+                .video-lightbox {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 10000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0,0,0,.88);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity .25s ease, visibility .25s ease;
+                    padding: 40px;
+                }
+
+                    .video-lightbox.active {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                .video-lightbox-container {
+                    width: min(1100px, 90vw);
+                    aspect-ratio: 16/9;
+                    background: #000;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 20px 80px rgba(0,0,0,.7);
+                    transform: scale(.9);
+                    transition: transform .3s ease;
+                }
+
+                .video-lightbox.active .video-lightbox-container {
+                    transform: scale(1);
+                }
+
+                .video-lightbox-container iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                    display: block;
+                }
+
+                .video-lightbox-close {
+                    position: absolute;
+                    top: 25px;
+                    right: 30px;
+                    font-family: var(--mono);
+                    font-size: 28px;
+                    color: #fff;
+                    cursor: pointer;
+                    opacity: .7;
+                    transition: .2s;
+                }
+
+                    .video-lightbox-close:hover {
+                        opacity: 1;
+                        color: var(--gold);
+                    }
+
+                /* =========================
+             IMAGE LIGHTBOX
+          ========================= */
+
+                .lightbox {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 9999;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(0,0,0,.85);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity .25s ease, visibility .25s ease;
+                    padding: 40px;
+                }
+
+                    .lightbox.active {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                    .lightbox img {
+                        max-width: 90vw;
+                        max-height: 90vh;
+                        width: auto;
+                        height: auto;
+                        object-fit: contain;
+                        border-radius: 6px;
+                        box-shadow: 0 20px 60px rgba(0,0,0,.5);
+                        transform: scale(.9);
+                        transition: transform .3s ease;
+                    }
+
+                    .lightbox.active img {
+                        transform: scale(1);
+                    }
+
+                .lightbox-close {
+                    position: absolute;
+                    top: 25px;
+                    right: 30px;
+                    font-family: var(--mono);
+                    font-size: 28px;
+                    color: #fff;
+                    cursor: pointer;
+                    opacity: .7;
+                    transition: .2s;
+                }
+
+                    .lightbox-close:hover {
+                        opacity: 1;
+                        color: var(--gold);
+                    }
+
+
+                /* =========================
+             PROJECT INFO
+          ========================= */
+
+                .info-panel {
+                    position: sticky;
+                    top: 110px;
+                    height: max-content;
+                    border: 1px solid var(--border);
+                    border-radius: 8px;
+                    background: var(--surface);
+                    padding: 25px;
+                }
+
+                    .info-panel h2 {
+                        font-family: var(--mono);
+                        font-size: 15px;
+                        color: var(--gold);
+                        margin-bottom: 22px;
+                    }
+
+                .info-list {
+                    border-top: 1px solid var(--border);
+                }
+
+                .info-row {
+                    padding: 13px 0;
+                    border-bottom: 1px solid var(--border);
+                }
+
+                .info-label {
+                    font-family: var(--mono);
+                    font-size: 10px;
+                    color: var(--muted);
+                    text-transform: uppercase;
+                    margin-bottom: 3px;
+                }
+
+                .info-value {
+                    font-size: 13px;
+                }
+
+                    .info-value a {
+                        color: var(--gold);
+                        word-break: break-word;
+                    }
+
+
+                /* =========================
+             DESCRIPTION
+          ========================= */
+
+                .description {
+                    max-width: 760px;
+                    margin-top: 60px;
+                }
+
+                .section-label {
+                    font-family: var(--mono);
+                    font-size: 11px;
+                    color: var(--gold);
+                    letter-spacing: .08em;
+                    text-transform: uppercase;
+                    margin-bottom: 15px;
+                }
+
+                .description h2,
+                .responsibilities h2 {
+                    font-family: var(--mono);
+                    font-size: 28px;
+                    margin-bottom: 20px;
+                }
+
+                .description p {
+                    color: var(--muted);
+                    font-size: 14.5px;
+                    margin-bottom: 18px;
+                }
+
+                .description strong {
+                    color: var(--text);
+                }
+
+
+                /* =========================
+             RESPONSIBILITIES
+          ========================= */
+
+                .responsibilities {
+                    margin-top: 55px;
+                }
+
+                .responsibility-group {
+                    margin-top: 35px;
+                }
+
+                .responsibility-group-title {
+                    font-family: var(--mono);
+                    font-size: 15px;
+                    color: var(--text);
+                    margin-bottom: 15px;
+                    padding-bottom: 10px;
+                    border-bottom: 1px solid var(--border);
+                }
+
+                .responsibility-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 12px;
+                }
+
+                .responsibility {
+                    border: 1px solid var(--border);
+                    background: var(--surface);
+                    padding: 17px 18px;
+                    border-radius: 5px;
+                }
+
+                .responsibility-number {
+                    font-family: var(--mono);
+                    color: var(--gold);
+                    font-size: 11px;
+                    margin-bottom: 7px;
+                }
+
+                .responsibility h3 {
+                    font-family: var(--mono);
+                    font-size: 13px;
+                    margin-bottom: 5px;
+                }
+
+                .responsibility p {
+                    color: var(--muted);
+                    font-size: 12px;
+                }
+
+
+                /* =========================
+             BOTTOM NAV
+          ========================= */
+
+                .bottom-nav {
+                    border-top: 1px solid var(--border);
+                    padding: 50px 0 80px;
+                }
+
+                .bottom-nav-inner {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .bottom-nav a {
+                    font-family: var(--mono);
+                    font-size: 12px;
+                    color: var(--muted);
+                    transition: .2s;
+                }
+
+                    .bottom-nav a:hover {
+                        color: var(--gold);
+                    }
+
+
+                /* =========================
+             FOOTER
+          ========================= */
+
+                footer {
+                    border-top: 1px solid var(--border);
+                    padding: 35px 0;
+                }
+
+                .copyright {
+                    font-family: var(--mono);
+                    font-size: 10.5px;
+                    color: #555b68;
+                }
+
+
+                /* =========================
+             MOBILE
+          ========================= */
+
+                @media(max-width:800px) {
+
+                    .wrap {
+                        padding: 0 20px;
+                    }
+
+                    .navbar {
+                        padding: 18px 20px;
+                    }
+
+                    nav.links {
+                        display: none;
+                    }
+
+                    .project-hero {
+                        padding-top: 130px;
+                        padding-bottom: 65px;
+                    }
+
+                    .project-layout {
+                        grid-template-columns: 1fr;
+                        gap: 40px;
+                        padding-bottom: 80px;
+                    }
+
+                    .info-panel {
+                        position: static;
+                    }
+
+                    .gallery {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .responsibility-grid {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .bottom-nav-inner {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 20px;
+                    }
+                }
+    </style>
 </head>
 
-<body class="portfolio-details-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+<body>
 
-    <div class="profile-img">
-      <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
-    </div>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <!-- Uncomment the line below if you also wish to use an image logo -->
-      <!-- <img src="assets/img/logo.png" alt=""> -->
-      <h1 class="sitename">Jang WooYoung</h1>
-    </a>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-          <li><a href="index.html"><i class="bi bi-house navicon"></i>Home</a></li>
-      </ul>
-    </nav>
+    <header>
 
-  </header>
+        <div class="navbar">
 
-  <main class="main">
+            <a href="index.html" class="logo">
+                BAD<span>.</span>A
+            </a>
 
-    <!-- Page Title -->
-    <div class="page-title dark-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Portfolio Details</li>
-          </ol>
-        </nav>
-      </div>
-    </div><!-- End Page Title -->
+            <nav class="links">
+                <a href="index.html#home">HOME</a>
+                <a href="index.html#about">ABOUT</a>
+                <a href="index.html#portfolio">PORTFOLIO</a>
+                <a href="index.html#resume">RESUME</a>
+            </nav>
 
-    <!-- Portfolio Details Section -->
-    <section id="portfolio-details" class="portfolio-details section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
-
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-
-              <div class="swiper-wrapper align-items-center">
-
-                  <div class="swiper-slide">
-                      <iframe id="video-slide"
-                              src="https://drive.google.com/file/d/10mOUKEq5ctDXv-kI0oGMkEEq_rk4OoXx/preview"
-                              width="100%" height="480" allow="autoplay">
-                      </iframe>
-                  </div>
-
-                  <div class="swiper-slide">
-                      <img src="assets/img/portfolio/Arsenal.jpg" alt="">
-                  </div>
-
-                  <div class="swiper-slide">
-                      <img src="assets/img/portfolio/Arsenal_Weapon.gif" alt="">
-                  </div>
-
-                  <div class="swiper-slide">
-                      <img src="assets/img/portfolio/Arsenal_MuzzleVFX.gif" alt="">
-                  </div>
-
-                  <div class="swiper-slide">
-                      <img src="assets/img/portfolio/Arsenal_Core.png" alt="">
-                  </div>
-
-                  <div class="swiper-slide">
-                      <img src="assets/img/portfolio/Arsenal_DedicatedServer.png" alt="">
-                  </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
-              <ul>
-                  <li><strong>Category</strong>: Game Project</li>
-                  <li><strong>Institution</strong>: Digipen Institute of Technology</li>
-                  <li><strong>Project date</strong>: 31 December, 2025</li>
-                  <li><strong>Project duration</strong>: 3 Months</li>
-                  <li><strong>Number of participants</strong>: 3</li>
-                  <li><strong>Position</strong>: TeamLeader / Programer</li>
-                  <li><strong>Project URL</strong>: <a>This project used perforce and due to epic games policy, you can't test this project.</a></li>
-              </ul>
-            </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Arsenal is <strong>Armor penetraction</strong> based <strong>Multiplayer</strong> first person shooter game.</h2>
-              <p>
-                  Arsenal has unique penetration system inspired by world of tanks and war thunder.
-                  Player can choose light armored, fast phase play style or take heavy armor and become tanker.
-                  Heavy armor can withstand heavy firepower but it cost a lot so you always take care of exchange ratio.
-                  We provide Team Deathmatch 5 : 5 PVP Game with AI which inspired by titanfall game.
-                  AI grunts are way easy target but it rewards less points to player.
-                  First team reaches the goal will win.<br>
-                  <strong>As Team leader I was respawnsable for :</strong><br>
-                  - Recrute Artists<br>
-                  - Manage scadules<br>
-                  - Teach Unreal Engine's basic to Programmer Team<br>
-                  <strong>As Programmer I was respawnsable for :</strong><br>
-                  - Create Armor Piercing Algorithm<br>
-                  - Host and maintain Perforce server for software configuration management<br>
-                  - Connect and maintain to Epic Online Service and manage sessions<br>
-                  - Make, debug, maintain dedicated server<br>
-                  - Create main menu UI includes session lists, weapon customize, character customize<br>
-                  - Define data structures for weapon customize, character armors and layouts, account infos<br>
-                  - Create Team Death Match gamemode<br>
-                  - Save and load user data to spawn player character as desired<br>
-                  - Create character inheritance hierarchy and character movement, animation adjustments<br>
-                  - Aim down sights, muzzle direction to camera center offset adjustments<br>
-                  - Add sound effects such as gun fires and footsteps decided by surface material<br>
-                  - Add visual effects for muzzle flash, optics, recochets, particles by projectile hit surfaces.<br>
-                  <strong>As 3D modeler I was respawnsable for :</strong><br>
-                  - Create guns and attachments, body aromors<br>
-                  - Create playable maps and menu maps<br>
-              </p>
-            </div>
-          </div>
+            <a href="index.html#portfolio" class="back-btn">
+                ← PORTFOLIO
+            </a>
 
         </div>
 
-      </div>
+    </header>
 
-    </section><!-- /Portfolio Details Section -->
 
-  </main>
 
-  <footer id="footer" class="footer position-relative light-background">
+    <main>
 
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-      </div>
+
+        <!-- =========================
+             PROJECT HERO
+        ========================= -->
+
+        <section class="project-hero wrap">
+
+            <div class="eyebrow">
+                PORTFOLIO / GAME PROJECT
+            </div>
+
+            <h1>Arsenal</h1>
+
+            <p class="project-subtitle">
+                Unreal Engine 기반 Armor Penetration Multiplayer FPS
+            </p>
+
+            <div class="project-meta">
+
+                <span class="meta-tag">Unreal Engine</span>
+                <span class="meta-tag">C++</span>
+                <span class="meta-tag">Multiplayer</span>
+                <span class="meta-tag">Team Leader</span>
+                <span class="meta-tag">3 People</span>
+                <span class="meta-tag">3 Months</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PROJECT CONTENT
+        ========================= -->
+
+        <section class="wrap project-layout">
+
+
+            <!-- LEFT -->
+            <div>
+
+
+                <!-- VIDEO -->
+
+                <div class="media-section">
+
+                    <div class="main-video">
+
+                        <iframe src="https://www.youtube.com/embed/ORczCbvYvOU"
+                                title="Arsenal Gameplay"
+                                allow="autoplay; encrypted-media"
+                                allowfullscreen>
+                        </iframe>
+
+                    </div>
+
+
+                    <!-- IMAGE GALLERY -->
+
+                    <div class="gallery">
+
+                        <div class="gallery-item">
+                            <img src="assets/img/portfolio/Arsenal.jpg"
+                                 alt="Arsenal">
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="assets/img/portfolio/Arsenal_Weapon.gif"
+                                 alt="Arsenal Weapon System">
+                        </div>
+
+                        <div class="gallery-item video-gallery-item">
+                            <div class="video-thumbnail">
+                                <iframe src="https://www.youtube.com/embed/1jipHB_kZzw?controls=0"
+                                        title="Arsenal Muzzle VFX"
+                                        tabindex="-1">
+                                </iframe>
+
+                                <div class="video-play">
+                                    ▶
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item video-gallery-item">
+                            <div class="video-thumbnail">
+                                <iframe src="https://www.youtube.com/embed/gZgHoAhXnOg?controls=0"
+                                        title="Bullet Penetration Demo"
+                                        tabindex="-1">
+                                </iframe>
+
+                                <div class="video-play">
+                                    ▶
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="assets/img/portfolio/Arsenal_Core.png"
+                                 alt="Arsenal Core System">
+                        </div>
+
+                        <div class="gallery-item">
+                            <img src="assets/img/portfolio/Arsenal_DedicatedServer.png"
+                                 alt="Arsenal Dedicated Server">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="description">
+
+                    <div class="section-label">
+                        // 01 — OVERVIEW
+                    </div>
+
+                    <h2>
+                        About the Project
+                    </h2>
+
+                    <p>
+                        Arsenal은 <strong>Armor Penetration</strong> 시스템을
+                        핵심 게임플레이 요소로 하는 Multiplayer First-Person
+                        Shooter 게임입니다.
+                    </p>
+
+                    <p>
+                        World of Tanks와 War Thunder의 방어력 및 관통 시스템에서
+                        영감을 받아, 플레이어가 장갑의 종류와 탄환의 관통력을
+                        고려하여 적을 공격할 수 있도록 구현했습니다.
+                    </p>
+
+                    <p>
+                        플레이어는 빠른 기동성을 가진 Light Armor를 선택하거나,
+                        높은 방어력을 가진 Heavy Armor를 선택할 수 있습니다.
+                        Heavy Armor는 강력한 화력을 견딜 수 있지만 높은 비용이
+                        필요하기 때문에 전투에서 교환비를 고려하는 것이
+                        중요하도록 설계했습니다.
+                    </p>
+
+                    <p>
+                        게임은 <strong>5 vs 5 Team Deathmatch</strong>를
+                        기본으로 하며, Titanfall에서 영감을 받은 AI Grunt를
+                        추가했습니다. AI는 플레이어보다 쉽게 처치할 수 있지만
+                        더 적은 점수를 제공하도록 설계했습니다.
+                    </p>
+
+                    <p>
+                        먼저 목표 점수에 도달한 팀이 승리하는 방식으로
+                        게임을 구성했습니다.
+                    </p>
+
+                </div>
+
+
+
+                <!-- RESPONSIBILITIES -->
+
+                <div class="responsibilities">
+
+                    <div class="section-label">
+                        // 02 — RESPONSIBILITIES
+                    </div>
+
+                    <h2>
+                        What I Worked On
+                    </h2>
+
+
+
+                    <!-- TEAM LEADER -->
+
+                    <div class="responsibility-group">
+
+                        <div class="responsibility-group-title">
+                            TEAM LEADER
+                        </div>
+
+                        <div class="responsibility-grid">
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    01
+                                </div>
+
+                                <h3>
+                                    Team Management
+                                </h3>
+
+                                <p>
+                                    팀원 관리 및 전체 프로젝트 진행 방향 조율
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    02
+                                </div>
+
+                                <h3>
+                                    Artist Recruitment
+                                </h3>
+
+                                <p>
+                                    프로젝트에 필요한 Artist 모집 및 역할 분배
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    03
+                                </div>
+
+                                <h3>
+                                    Schedule Management
+                                </h3>
+
+                                <p>
+                                    개발 일정 관리 및 팀 프로젝트 진행 상황 조율
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    04
+                                </div>
+
+                                <h3>
+                                    Unreal Engine Training
+                                </h3>
+
+                                <p>
+                                    Programmer 팀원들에게 Unreal Engine의
+                                    기본적인 사용법과 개발 구조 교육
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROGRAMMER -->
+
+                    <div class="responsibility-group">
+
+                        <div class="responsibility-group-title">
+                            PROGRAMMER
+                        </div>
+
+                        <div class="responsibility-grid">
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    01
+                                </div>
+
+                                <h3>
+                                    Armor Penetration
+                                </h3>
+
+                                <p>
+                                    탄환의 관통력과 장갑의 방어력을 기반으로
+                                    한 Armor Penetration Algorithm 구현<br>
+                                    Projectile Movement의 collision기반에서 LineTrace와 Projectile Movement혼합형으로 개선
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    02
+                                </div>
+
+                                <h3>
+                                    Perforce Server
+                                </h3>
+
+                                <p>
+                                    Software Configuration Management를 위한
+                                    Perforce 서버 구축 및 유지보수
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    03
+                                </div>
+
+                                <h3>
+                                    Epic Online Services
+                                </h3>
+
+                                <p>
+                                    Epic Online Services 연동 및 Multiplayer
+                                    Session 관리
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    04
+                                </div>
+
+                                <h3>
+                                    Dedicated Server
+                                </h3>
+
+                                <p>
+                                    Dedicated Server 구축, 디버깅 및
+                                    지속적인 유지보수
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    05
+                                </div>
+
+                                <h3>
+                                    Main Menu UI
+                                </h3>
+
+                                <p>
+                                    Session 정보, 무기 설정,
+                                    캐릭터 장비 설정을 포함한
+                                    메인 메뉴 UI 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    06
+                                </div>
+
+                                <h3>
+                                    Data Structures
+                                </h3>
+
+                                <p>
+                                    무기 설정 정보, 캐릭터 갑옷 레이아웃 및 계정 정보를 위한 데이터 구조 설계
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    07
+                                </div>
+
+                                <h3>
+                                    Game Mode
+                                </h3>
+
+                                <p>
+                                    5 vs 5 Team Deathmatch 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    08
+                                </div>
+
+                                <h3>
+                                    User Data
+                                </h3>
+
+                                <p>
+                                    User Data 저장 및 불러오기 시스템을 구현하여
+                                    플레이어가 원하는 캐릭터 설정으로 Spawn
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    09
+                                </div>
+
+                                <h3>
+                                    Character System
+                                </h3>
+
+                                <p>
+                                    캐릭터 상속구조 및 캐릭터 이동, 애니메이션 제작
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    10
+                                </div>
+
+                                <h3>
+                                    Weapon & Camera
+                                </h3>
+
+                                <p>
+                                    조준 구현 및 총구방향과 카메라 중점 정렬
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    11
+                                </div>
+
+                                <h3>
+                                    Sound System
+                                </h3>
+
+                                <p>
+                                    총기 발사음 및 Surface Material에 따른
+                                    Footstep Sound 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    12
+                                </div>
+
+                                <h3>
+                                    Visual Effects
+                                </h3>
+
+                                <p>
+                                    총구화염, 조준경, 도탄 및
+                                    탄착점 물질에 따른
+                                    파티클 VFX 및 데칼 구현
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- 3D MODELER -->
+
+                    <div class="responsibility-group">
+
+                        <div class="responsibility-group-title">
+                            3D MODELER
+                        </div>
+
+                        <div class="responsibility-grid">
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    01
+                                </div>
+
+                                <h3>
+                                    Weapons & Attachments
+                                </h3>
+
+                                <p>
+                                    게임에 사용되는 총기 및 부착물 3D 모델 제작
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    02
+                                </div>
+
+                                <h3>
+                                    Body Armor
+                                </h3>
+
+                                <p>
+                                    플레이어 캐릭터에 사용되는 갑옷
+                                    3D 모델 제작
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    03
+                                </div>
+
+                                <h3>
+                                    Playable Maps
+                                </h3>
+
+                                <p>
+                                    실제 게임플레이에 사용되는 플레이 가능한 맵 제작
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    04
+                                </div>
+
+                                <h3>
+                                    Menu Maps
+                                </h3>
+
+                                <p>
+                                    Main Menu 및 게임 UI에 사용되는 배경 맵 제작 및 카메라 세팅
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RIGHT -->
+
+            <aside class="info-panel">
+
+                <h2>
+                    PROJECT INFORMATION
+                </h2>
+
+                <div class="info-list">
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Category
+                        </div>
+
+                        <div class="info-value">
+                            Game Project
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Institution
+                        </div>
+
+                        <div class="info-value">
+                            Digipen Institute of Technology
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Date
+                        </div>
+
+                        <div class="info-value">
+                            2025년 12월 31일
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Duration
+                        </div>
+
+                        <div class="info-value">
+                            3개월
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Team
+                        </div>
+
+                        <div class="info-value">
+                            3명
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Position
+                        </div>
+
+                        <div class="info-value">
+                            Team Leader / Programmer / 3D Modeler
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Engine
+                        </div>
+
+                        <div class="info-value">
+                            Unreal Engine
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Genre
+                        </div>
+
+                        <div class="info-value">
+                            Multiplayer FPS
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Repository
+                        </div>
+
+                        <div class="info-value">
+                            Perforce
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Project Access
+                        </div>
+
+                        <div class="info-value">
+                            Private Project
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </aside>
+
+
+        </section>
+
+
+
+        <!-- =========================
+             BOTTOM NAV
+        ========================= -->
+
+        <section class="bottom-nav">
+
+            <div class="wrap bottom-nav-inner">
+
+                <a href="index.html#portfolio">
+                    ← Back to Portfolio
+                </a>
+
+                <a href="index.html">
+                    Home ↑
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="wrap">
+
+            <div class="copyright">
+                © 2026 Jang WooYoung — Game Developer Portfolio
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         IMAGE LIGHTBOX
+    ========================= -->
+
+    <div class="lightbox" id="lightbox">
+
+        <span class="lightbox-close" id="lightboxClose">
+            ×
+        </span>
+
+        <img id="lightboxImage" src="" alt="">
+
     </div>
 
-  </footer>
+    <!-- =========================
+         VIDEO LIGHTBOX
+    ========================= -->
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <div class="video-lightbox" id="videoLightbox">
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        <span class="video-lightbox-close" id="videoLightboxClose">
+            ×
+        </span>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <div class="video-lightbox-container">
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+            <iframe id="videoLightboxFrame"
+                    src=""
+                    title="Arsenal Muzzle VFX"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const galleryImages =
+            document.querySelectorAll('.gallery-item img');
+
+        const lightbox =
+            document.getElementById('lightbox');
+
+        const lightboxImage =
+            document.getElementById('lightboxImage');
+
+        const lightboxClose =
+            document.getElementById('lightboxClose');
+
+
+        galleryImages.forEach(img => {
+
+            img.addEventListener('click', () => {
+
+                lightboxImage.src = img.src;
+
+                lightboxImage.alt = img.alt;
+
+                lightbox.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            });
+
+        });
+
+
+        lightboxClose.addEventListener(
+            'click',
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener('click', event => {
+
+            if (
+                event.target === lightboxImage ||
+                event.target === lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        });
+
+
+        document.addEventListener('keydown', event => {
+
+            if (event.key === 'Escape') {
+
+                closeLightbox();
+
+            }
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        }
+        /* =========================
+VIDEO LIGHTBOX
+========================= */
+
+        const videoGalleryItems =
+            document.querySelectorAll('.video-gallery-item');
+
+        const videoLightbox =
+            document.getElementById('videoLightbox');
+
+        const videoLightboxFrame =
+            document.getElementById('videoLightboxFrame');
+
+        const videoLightboxClose =
+            document.getElementById('videoLightboxClose');
+
+
+        videoGalleryItems.forEach(item => {
+
+            item.addEventListener('click', () => {
+
+                const iframe =
+                    item.querySelector('iframe');
+
+                const videoUrl =
+                    iframe.src;
+
+                videoLightboxFrame.src =
+                    videoUrl.replace(
+                        '?controls=0',
+                        '?autoplay=1'
+                    );
+
+                videoLightbox.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            });
+
+        });
+
+
+        videoLightboxClose.addEventListener(
+            'click',
+            closeVideoLightbox
+        );
+
+
+        videoLightbox.addEventListener('click', event => {
+
+            if (event.target === videoLightbox) {
+
+                closeVideoLightbox();
+
+            }
+
+        });
+
+
+        document.addEventListener('keydown', event => {
+
+            if (event.key === 'Escape') {
+
+                closeVideoLightbox();
+
+            }
+
+        });
+
+
+        function closeVideoLightbox() {
+
+            videoLightbox.classList.remove('active');
+
+            /*
+             * 영상 종료
+             */
+            videoLightboxFrame.src = '';
+
+            document.body.style.overflow = '';
+
+        }
+
+    </script>
+
 
 </body>
-
 </html>

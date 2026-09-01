@@ -1,216 +1,1205 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Portfolio Details - HeavenRiser</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeavenRiser | Jang WooYoung</title>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+            :root {
+                --bg: #12141A;
+                --surface: #191C23;
+                --surface2: #1F232C;
+                --border: #262A33;
+                --text: #ECEDEF;
+                --muted: #8890A0;
+                --gold: #E8B54D;
+                --blue: #5B8DEF;
+                --mono: 'IBM Plex Mono', monospace;
+                --sans: 'Inter', sans-serif;
+            }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+                font-family: var(--sans);
+                line-height: 1.65;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            .wrap {
+                max-width: 1080px;
+                margin: 0 auto;
+                padding: 0 32px;
+            }
+
+
+            /* =========================
+           NAV
+        ========================= */
+
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                background: rgba(18,20,26,.9);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 18px 32px;
+                max-width: 1080px;
+                margin: 0 auto;
+            }
+
+            .logo {
+                font-family: var(--mono);
+                font-weight: 700;
+                font-size: 14.5px;
+            }
+
+                .logo span {
+                    color: var(--gold);
+                }
+
+            nav.links {
+                display: flex;
+                gap: 34px;
+            }
+
+                nav.links a {
+                    font-family: var(--mono);
+                    font-size: 12.5px;
+                    color: var(--muted);
+                    transition: .2s;
+                }
+
+                    nav.links a:hover {
+                        color: var(--text);
+                    }
+
+            .back-btn {
+                font-family: var(--mono);
+                font-size: 12px;
+                border: 1px solid var(--border);
+                padding: 9px 16px;
+                border-radius: 4px;
+                transition: .2s;
+            }
+
+                .back-btn:hover {
+                    border-color: var(--gold);
+                    color: var(--gold);
+                }
+
+
+            /* =========================
+           HERO
+        ========================= */
+
+            .project-hero {
+                padding-top: 170px;
+                padding-bottom: 90px;
+            }
+
+            .eyebrow {
+                font-family: var(--mono);
+                font-size: 12px;
+                letter-spacing: .08em;
+                color: var(--gold);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+
+                .eyebrow::before {
+                    content: "";
+                    width: 20px;
+                    height: 1px;
+                    background: var(--gold);
+                }
+
+            .project-hero h1 {
+                font-family: var(--mono);
+                font-size: clamp(42px,7vw,76px);
+                line-height: 1;
+                margin-bottom: 20px;
+            }
+
+            .project-subtitle {
+                font-size: 19px;
+                color: var(--muted);
+                max-width: 760px;
+            }
+
+            .project-meta {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 30px;
+            }
+
+            .meta-tag {
+                font-family: var(--mono);
+                font-size: 11px;
+                border: 1px solid var(--border);
+                padding: 7px 11px;
+                border-radius: 4px;
+                color: var(--muted);
+            }
+
+
+            /* =========================
+           MAIN PROJECT
+        ========================= */
+
+            .project-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1.65fr) minmax(260px, .8fr);
+                gap: 56px;
+                padding-bottom: 120px;
+            }
+
+
+            /* =========================
+           MEDIA
+        ========================= */
+
+            .media-section {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .main-video {
+                width: 100%;
+                aspect-ratio: 16/9;
+                background: #000;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+                .main-video iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                    display: block;
+                }
+
+
+            /* =========================
+           IMAGE GALLERY
+        ========================= */
+
+            .gallery {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+
+            .gallery-item {
+                border: 1px solid var(--border);
+                border-radius: 6px;
+                overflow: hidden;
+                background: var(--surface);
+            }
+
+                .gallery-item img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    cursor: zoom-in;
+                    transition: transform .3s;
+                }
+
+                .gallery-item:hover img {
+                    transform: scale(1.025);
+                }
+
+
+            /* =========================
+           IMAGE LIGHTBOX
+        ========================= */
+
+            .lightbox {
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0,0,0,.88);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity .25s ease, visibility .25s ease;
+                padding: 40px;
+            }
+
+                .lightbox.active {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                .lightbox img {
+                    max-width: 90vw;
+                    max-height: 90vh;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    border-radius: 6px;
+                    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+                    transform: scale(.9);
+                    transition: transform .3s ease;
+                }
+
+                .lightbox.active img {
+                    transform: scale(1);
+                }
+
+            .lightbox-close {
+                position: absolute;
+                top: 25px;
+                right: 30px;
+                font-family: var(--mono);
+                font-size: 28px;
+                color: #fff;
+                cursor: pointer;
+                opacity: .7;
+                transition: .2s;
+            }
+
+                .lightbox-close:hover {
+                    opacity: 1;
+                    color: var(--gold);
+                }
+
+
+            /* =========================
+           PROJECT INFO
+        ========================= */
+
+            .info-panel {
+                position: sticky;
+                top: 110px;
+                height: max-content;
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                background: var(--surface);
+                padding: 25px;
+            }
+
+                .info-panel h2 {
+                    font-family: var(--mono);
+                    font-size: 15px;
+                    color: var(--gold);
+                    margin-bottom: 22px;
+                }
+
+            .info-list {
+                border-top: 1px solid var(--border);
+            }
+
+            .info-row {
+                padding: 13px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .info-label {
+                font-family: var(--mono);
+                font-size: 10px;
+                color: var(--muted);
+                text-transform: uppercase;
+                margin-bottom: 3px;
+            }
+
+            .info-value {
+                font-size: 13px;
+            }
+
+                .info-value a {
+                    color: var(--gold);
+                    word-break: break-word;
+                }
+
+
+            /* =========================
+           DESCRIPTION
+        ========================= */
+
+            .description {
+                max-width: 760px;
+                margin-top: 60px;
+            }
+
+            .section-label {
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--gold);
+                letter-spacing: .08em;
+                text-transform: uppercase;
+                margin-bottom: 15px;
+            }
+
+            .description h2,
+            .responsibilities h2 {
+                font-family: var(--mono);
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .description p {
+                color: var(--muted);
+                font-size: 14.5px;
+                margin-bottom: 18px;
+            }
+
+            .description strong {
+                color: var(--text);
+            }
+
+
+            /* =========================
+           RESPONSIBILITIES
+        ========================= */
+
+            .responsibilities {
+                margin-top: 55px;
+            }
+
+            .responsibility-group {
+                margin-top: 35px;
+            }
+
+            .responsibility-group-title {
+                font-family: var(--mono);
+                font-size: 15px;
+                color: var(--text);
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .responsibility-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .responsibility {
+                border: 1px solid var(--border);
+                background: var(--surface);
+                padding: 17px 18px;
+                border-radius: 5px;
+            }
+
+            .responsibility-number {
+                font-family: var(--mono);
+                color: var(--gold);
+                font-size: 11px;
+                margin-bottom: 7px;
+            }
+
+            .responsibility h3 {
+                font-family: var(--mono);
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+
+            .responsibility p {
+                color: var(--muted);
+                font-size: 12px;
+            }
+
+
+            /* =========================
+           BOTTOM NAV
+        ========================= */
+
+            .bottom-nav {
+                border-top: 1px solid var(--border);
+                padding: 50px 0 80px;
+            }
+
+            .bottom-nav-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .bottom-nav a {
+                font-family: var(--mono);
+                font-size: 12px;
+                color: var(--muted);
+                transition: .2s;
+            }
+
+                .bottom-nav a:hover {
+                    color: var(--gold);
+                }
+
+
+            /* =========================
+           FOOTER
+        ========================= */
+
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 35px 0;
+            }
+
+            .copyright {
+                font-family: var(--mono);
+                font-size: 10.5px;
+                color: #555b68;
+            }
+
+
+            /* =========================
+           MOBILE
+        ========================= */
+
+            @media(max-width:800px) {
+
+                .wrap {
+                    padding: 0 20px;
+                }
+
+                .navbar {
+                    padding: 18px 20px;
+                }
+
+                nav.links {
+                    display: none;
+                }
+
+                .project-hero {
+                    padding-top: 130px;
+                    padding-bottom: 65px;
+                }
+
+                .project-layout {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                    padding-bottom: 80px;
+                }
+
+                .info-panel {
+                    position: static;
+                }
+
+                .gallery {
+                    grid-template-columns: 1fr;
+                }
+
+                .responsibility-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .bottom-nav-inner {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 20px;
+                }
+            }
+    </style>
+
 </head>
+<body>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<body class="portfolio-details-page">
+    <header>
 
-    <header id="header" class="header dark-background d-flex flex-column">
-        <i class="header-toggle d-xl-none bi bi-list"></i>
+        <div class="navbar">
 
-        <div class="profile-img">
-            <img src="assets/img/my-profile-img.jpg" alt="" class="img-fluid rounded-circle">
+            <a href="index.html" class="logo">
+                BAD<span>.</span>A
+            </a>
+
+            <nav class="links">
+                <a href="index.html#home">HOME</a>
+                <a href="index.html#about">ABOUT</a>
+                <a href="index.html#portfolio">PORTFOLIO</a>
+                <a href="index.html#resume">RESUME</a>
+            </nav>
+
+            <a href="index.html#portfolio" class="back-btn">
+                ← PORTFOLIO
+            </a>
+
         </div>
-
-        <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1 class="sitename">Jang WooYoung</h1>
-        </a>
-
-        <nav id="navmenu" class="navmenu">
-            <ul>
-                <li><a href="index.html"><i class="bi bi-house navicon"></i>Home</a></li>
-            </ul>
-        </nav>
 
     </header>
 
-    <main class="main">
 
-        <!-- Page Title -->
-        <div class="page-title dark-background">
-            <div class="container d-lg-flex justify-content-between align-items-center">
-                <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
-                <nav class="breadcrumbs">
-                    <ol>
-                        <li><a href="index.html">Home</a></li>
-                        <li class="current">Portfolio Details</li>
-                    </ol>
-                </nav>
+    <main>
+
+
+        <!-- =========================
+             PROJECT HERO
+        ========================= -->
+
+        <section class="project-hero wrap">
+
+            <div class="eyebrow">
+                PORTFOLIO / GAME PROJECT
             </div>
-        </div><!-- End Page Title -->
-        <!-- Portfolio Details Section -->
-        <section id="portfolio-details" class="portfolio-details section">
 
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
+            <h1>HeavenRiser</h1>
 
-                <div class="row gy-4">
+            <p class="project-subtitle">
+                Unreal Engine 기반 Vampire Survival 스타일의
+                Action Game
+            </p>
 
-                    <div class="col-lg-8">
-                        <div class="portfolio-details-slider swiper init-swiper">
+            <div class="project-meta">
 
-                            <script type="application/json" class="swiper-config">
-                                {
-                                  "loop": true,
-                                  "speed": 600,
-                                  "autoplay": {
-                                    "delay": 5000
-                                  },
-                                  "slidesPerView": "auto",
-                                  "pagination": {
-                                    "el": ".swiper-pagination",
-                                    "type": "bullets",
-                                    "clickable": true
-                                  }
-                                }
-                            </script>
+                <span class="meta-tag">Unreal Engine</span>
+                <span class="meta-tag">C++</span>
+                <span class="meta-tag">Game AI</span>
+                <span class="meta-tag">VFX</span>
+                <span class="meta-tag">Programmer</span>
+                <span class="meta-tag">3 People</span>
+                <span class="meta-tag">1 Month</span>
 
-                            <div class="swiper-wrapper align-items-center">
+            </div>
 
-                                <div class="swiper-slide">
-                                    <iframe id="video-slide"
-                                            src="https://drive.google.com/file/d/17GKxMFdsh7r-4e5v73POwlrmsTvUz73G/preview"
-                                            width="100%" height="480" allow="autoplay">
-                                    </iframe>
-                                </div>
+        </section>
 
-                                <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/HeavenRiser.png" alt="">
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/HeavenRiser_WeaponPick.png" alt="">
-                                </div>
+        <!-- =========================
+             PROJECT CONTENT
+        ========================= -->
 
-                                <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/HeavenRiser_ItemPick.png" alt="">
-                                </div>
+        <section class="wrap project-layout">
 
-                                <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/HeavenRiser_BossFight.png" alt="">
-                                </div>
 
-                                <div class="swiper-slide">
-                                    <img src="assets/img/portfolio/HeavenRiser_Fight.png" alt="">
-                                </div>
+            <!-- LEFT -->
+            <div>
 
-                            </div>
-                            <div class="swiper-pagination"></div>
-                        </div>
+
+                <!-- MEDIA -->
+
+                <div class="media-section">
+
+                    <div class="main-video">
+
+                        <iframe src="https://www.youtube.com/embed/pXAe74nAeWU"
+                                title="HeavenRiser Gameplay"
+                                allow="autoplay"
+                                allowfullscreen>
+                        </iframe>
+
                     </div>
 
-                    <div class="col-lg-4">
-                        <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-                            <h3>Project information</h3>
-                            <ul>
-                                <li><strong>Category</strong>: Game Project</li>
-                                <li><strong>Institution</strong>: Digipen Institute of Technology</li>
-                                <li><strong>Project date</strong>: 17 July, 2025</li>
-                                <li><strong>Project duration</strong>: 1 Month</li>
-                                <li><strong>Number of participants</strong>: 3</li>
-                                <li><strong>Position</strong>: Programer</li>
-                                <li><strong>Project URL</strong>: <a href="https://github.com/Soljibae/Tamsaasoo" target="_blank">https://github.com/Soljibae/Tamsaasoo</a></li>
-                            </ul>
+
+                    <!-- IMAGE GALLERY -->
+
+                    <div class="gallery">
+
+                        <div class="gallery-item">
+
+                            <img src="assets/img/portfolio/HeavenRiser.png"
+                                 alt="HeavenRiser">
+
                         </div>
-                        <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-                            <h2>HeavenRiser is "Vampire Survival" like game.</h2>
-                            <p>
-                                During this team project, I was responsible for:<br>
-                                - Creating character animations<br>
-                                - Developing AI for enemy characters<br>
-                                - Designing behavior patterns for boss enemies<br>
-                                - Producing animations for both player and enemy characters<br>
-                                - Implementing mob spawn logic<br>
-                                - Creating data for various types of firearms<br>
-                                - Developing VFX features (such as area effects, warnings, status effects, potion effects)<br>
-                                - Implementing line tracing for high-speed projectiles<br>
-                                - Designing collision systems for area attacks like lasers, black holes, and flames<br>
-                                - Producing art assets<br>
-                                - Line tracing for bullet trajectories
-                            </p>
+
+
+                        <div class="gallery-item">
+
+                            <img src="assets/img/portfolio/HeavenRiser_WeaponPick.png"
+                                 alt="HeavenRiser Weapon Pick">
+
                         </div>
+
+
+                        <div class="gallery-item">
+
+                            <img src="assets/img/portfolio/HeavenRiser_ItemPick.png"
+                                 alt="HeavenRiser Item Pick">
+
+                        </div>
+
+
+                        <div class="gallery-item">
+
+                            <img src="assets/img/portfolio/HeavenRiser_BossFight.png"
+                                 alt="HeavenRiser Boss Fight">
+
+                        </div>
+
+
+                        <div class="gallery-item">
+
+                            <img src="assets/img/portfolio/HeavenRiser_Fight.png"
+                                 alt="HeavenRiser Combat">
+
+                        </div>
+
                     </div>
 
                 </div>
 
+
+                <!-- DESCRIPTION -->
+
+                <div class="description">
+
+                    <div class="section-label">
+                        // 01 — OVERVIEW
+                    </div>
+
+                    <h2>
+                        About the Project
+                    </h2>
+
+                    <p>
+                        <strong>HeavenRiser</strong>는
+                        Vampire Survival 장르에서 영감을 받은
+                        Action Game 프로젝트입니다.
+                    </p>
+
+                    <p>
+                        플레이어는 다양한 무기와 아이템을 활용하여
+                        끊임없이 등장하는 적들을 상대하며,
+                        전투 상황에 맞춰 캐릭터를 성장시키는 방식으로
+                        게임플레이를 구성했습니다.
+                    </p>
+
+                    <p>
+                        프로젝트에서 저는 Programmer로 참여하여
+                        캐릭터와 적 AI, Boss Behavior, Mob Spawn,
+                        Weapon Data 및 다양한 전투 시스템을 구현했습니다.
+                    </p>
+
+                    <p>
+                        특히 빠르게 이동하는 Projectile에 대한
+                        <strong>Line Trace 기반 충돌 처리</strong>와
+                        Laser, Black Hole, Flame과 같은 Area Attack을
+                        위한 Collision System을 구현하여
+                        다양한 공격 형태를 지원하도록 개발했습니다.
+                    </p>
+
+                </div>
+
+
+                <!-- RESPONSIBILITIES -->
+
+                <div class="responsibilities">
+
+                    <div class="section-label">
+                        // 02 — RESPONSIBILITIES
+                    </div>
+
+                    <h2>
+                        What I Worked On
+                    </h2>
+
+
+                    <!-- PROGRAMMER -->
+
+                    <div class="responsibility-group">
+
+                        <div class="responsibility-group-title">
+                            PROGRAMMER
+                        </div>
+
+                        <div class="responsibility-grid">
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    01
+                                </div>
+
+                                <h3>
+                                    Character Animation
+                                </h3>
+
+                                <p>
+                                    플레이어 및 적 캐릭터의
+                                    Animation 구현 및 적용
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    02
+                                </div>
+
+                                <h3>
+                                    Enemy AI
+                                </h3>
+
+                                <p>
+                                    적 캐릭터의 AI 및
+                                    기본적인 행동 패턴 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    03
+                                </div>
+
+                                <h3>
+                                    Boss Behavior
+                                </h3>
+
+                                <p>
+                                    Boss Enemy의 공격 패턴과
+                                    행동 로직 설계 및 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    04
+                                </div>
+
+                                <h3>
+                                    Mob Spawn System
+                                </h3>
+
+                                <p>
+                                    게임 진행에 따른 적 캐릭터
+                                    Spawn Logic 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    05
+                                </div>
+
+                                <h3>
+                                    Weapon Data
+                                </h3>
+
+                                <p>
+                                    다양한 총기의 특성과
+                                    설정 정보를 위한 Data 제작
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    06
+                                </div>
+
+                                <h3>
+                                    VFX System
+                                </h3>
+
+                                <p>
+                                    Area Effect, Warning,
+                                    Status Effect, Potion Effect 등의
+                                    VFX 기능 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    07
+                                </div>
+
+                                <h3>
+                                    High-Speed Projectile
+                                </h3>
+
+                                <p>
+                                    빠른 속도로 이동하는 Projectile의
+                                    충돌 처리를 위한 Line Trace 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    08
+                                </div>
+
+                                <h3>
+                                    Area Attack Collision
+                                </h3>
+
+                                <p>
+                                    Laser, Black Hole, Flame 등
+                                    Area Attack을 위한 Collision System 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    09
+                                </div>
+
+                                <h3>
+                                    Bullet Line Trace
+                                </h3>
+
+                                <p>
+                                    총알의 탄도 및 충돌 판정을 위한
+                                    Line Trace System 구현
+                                </p>
+
+                            </div>
+
+
+                            <div class="responsibility">
+
+                                <div class="responsibility-number">
+                                    10
+                                </div>
+
+                                <h3>
+                                    Art Assets
+                                </h3>
+
+                                <p>
+                                    프로젝트에 필요한 일부
+                                    Art Asset 제작 및 적용
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
-        </section><!-- /Portfolio Details Section -->
+
+            <!-- RIGHT -->
+
+            <aside class="info-panel">
+
+                <h2>
+                    PROJECT INFORMATION
+                </h2>
+
+                <div class="info-list">
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Category
+                        </div>
+
+                        <div class="info-value">
+                            Game Project
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Institution
+                        </div>
+
+                        <div class="info-value">
+                            Digipen Institute of Technology
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Date
+                        </div>
+
+                        <div class="info-value">
+                            2025년 7월 17일
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Duration
+                        </div>
+
+                        <div class="info-value">
+                            1개월
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Team
+                        </div>
+
+                        <div class="info-value">
+                            3명
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Position
+                        </div>
+
+                        <div class="info-value">
+                            Programmer
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Engine
+                        </div>
+
+                        <div class="info-value">
+                            Alpha Engine
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Genre
+                        </div>
+
+                        <div class="info-value">
+                            Action / Vampire Survival
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <div class="info-label">
+                            Repository
+                        </div>
+
+                        <div class="info-value">
+
+                            <a href="https://github.com/Soljibae/Tamsaasoo"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+        </section>
+
+
+        <!-- =========================
+             BOTTOM NAV
+        ========================= -->
+
+        <section class="bottom-nav">
+
+            <div class="wrap bottom-nav-inner">
+
+                <a href="index.html#portfolio">
+                    ← Back to Portfolio
+                </a>
+
+                <a href="index.html">
+                    Home ↑
+                </a>
+
+            </div>
+
+        </section>
+
 
     </main>
 
-    <footer id="footer" class="footer position-relative light-background">
 
-        <div class="container">
-            <div class="copyright text-center ">
-                <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="wrap">
+
+            <div class="copyright">
+                © 2026 Jang WooYoung — Game Developer Portfolio
             </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a>
-            </div>
+
         </div>
 
     </footer>
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+    <!-- =========================
+         IMAGE LIGHTBOX
+    ========================= -->
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <div class="lightbox" id="lightbox">
 
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
+        <span class="lightbox-close" id="lightboxClose">
+            ×
+        </span>
+
+        <img id="lightboxImage"
+             src=""
+             alt="">
+
+    </div>
+
+
+    <script>
+
+        /* =========================
+           IMAGE LIGHTBOX
+        ========================= */
+
+        const galleryImages =
+            document.querySelectorAll('.gallery-item img');
+
+        const lightbox =
+            document.getElementById('lightbox');
+
+        const lightboxImage =
+            document.getElementById('lightboxImage');
+
+        const lightboxClose =
+            document.getElementById('lightboxClose');
+
+
+        galleryImages.forEach(img => {
+
+            img.addEventListener('click', () => {
+
+                lightboxImage.src = img.src;
+
+                lightboxImage.alt = img.alt;
+
+                lightbox.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            });
+
+        });
+
+
+        lightboxClose.addEventListener(
+            'click',
+            closeLightbox
+        );
+
+
+        lightbox.addEventListener('click', event => {
+
+            if (
+                event.target === lightboxImage ||
+                event.target === lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        });
+
+
+        document.addEventListener('keydown', event => {
+
+            if (event.key === 'Escape') {
+
+                closeLightbox();
+
+            }
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        }
+
+    </script>
 
 </body>
-
 </html>

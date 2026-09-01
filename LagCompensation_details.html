@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lag Compensation | Jang WooYoung</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --bg:#12141A;
+  --surface:#191C23;
+  --surface2:#1F232C;
+  --border:#262A33;
+  --text:#ECEDEF;
+  --muted:#8890A0;
+  --gold:#E8B54D;
+  --blue:#5B8DEF;
+
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'Inter',sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:100;
+
+  background:rgba(18,20,26,.9);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:18px 32px;
+
+  max-width:1080px;
+  margin:0 auto;
+}
+
+.logo{
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:14.5px;
+}
+
+.logo span{
+  color:var(--gold);
+}
+
+nav.links{
+  display:flex;
+  gap:34px;
+}
+
+nav.links a{
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:var(--muted);
+  transition:.2s;
+}
+
+nav.links a:hover{
+  color:var(--text);
+}
+
+.back-btn{
+  font-family:var(--mono);
+  font-size:12px;
+
+  border:1px solid var(--border);
+
+  padding:9px 16px;
+  border-radius:4px;
+
+  transition:.2s;
+}
+
+.back-btn:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.project-hero{
+  padding-top:170px;
+  padding-bottom:90px;
+}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.08em;
+
+  color:var(--gold);
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  margin-bottom:18px;
+}
+
+.eyebrow::before{
+  content:"";
+
+  width:20px;
+  height:1px;
+
+  background:var(--gold);
+}
+
+.project-hero h1{
+  font-family:var(--mono);
+
+  font-size:clamp(42px,7vw,76px);
+
+  line-height:1;
+
+  margin-bottom:20px;
+}
+
+.project-subtitle{
+  font-size:19px;
+  color:var(--muted);
+
+  max-width:760px;
+}
+
+.project-meta{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:10px;
+
+  margin-top:30px;
+}
+
+.meta-tag{
+  font-family:var(--mono);
+  font-size:11px;
+
+  border:1px solid var(--border);
+
+  padding:7px 11px;
+
+  border-radius:4px;
+
+  color:var(--muted);
+}
+
+
+/* =========================
+   MAIN PROJECT
+========================= */
+
+.project-layout{
+  display:grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(260px, .8fr);
+
+  gap:56px;
+
+  padding-bottom:120px;
+}
+
+
+/* =========================
+   MEDIA
+========================= */
+
+.media-section{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.main-video{
+  width:100%;
+  aspect-ratio:16/9;
+
+  background:#000;
+
+  border:1px solid var(--border);
+
+  border-radius:8px;
+
+  overflow:hidden;
+}
+
+.main-video iframe{
+  width:100%;
+  height:100%;
+
+  border:0;
+
+  display:block;
+}
+
+
+/* =========================
+   IMAGE GALLERY
+========================= */
+
+.gallery{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+}
+
+.gallery-item{
+  border:1px solid var(--border);
+
+  border-radius:6px;
+
+  overflow:hidden;
+
+  background:var(--surface);
+}
+
+.gallery-item img{
+  width:100%;
+  height:auto;
+
+  display:block;
+
+  cursor:zoom-in;
+
+  transition:transform .3s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.025);
+}
+
+
+/* =========================
+   IMAGE LIGHTBOX
+========================= */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+
+  z-index:9999;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(0,0,0,.85);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+
+  padding:40px;
+}
+
+.lightbox.active{
+  opacity:1;
+  visibility:visible;
+}
+
+.lightbox img{
+  max-width:90vw;
+  max-height:90vh;
+
+  width:auto;
+  height:auto;
+
+  object-fit:contain;
+
+  border-radius:6px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.5);
+
+  transform:scale(.9);
+
+  transition:transform .3s ease;
+}
+
+.lightbox.active img{
+  transform:scale(1);
+}
+
+.lightbox-close{
+  position:absolute;
+
+  top:25px;
+  right:30px;
+
+  font-family:var(--mono);
+
+  font-size:28px;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  opacity:.7;
+
+  transition:.2s;
+}
+
+.lightbox-close:hover{
+  opacity:1;
+  color:var(--gold);
+}
+
+
+/* =========================
+   PROJECT INFO
+========================= */
+
+.info-panel{
+  position:sticky;
+
+  top:110px;
+
+  height:max-content;
+
+  border:1px solid var(--border);
+
+  border-radius:8px;
+
+  background:var(--surface);
+
+  padding:25px;
+}
+
+.info-panel h2{
+  font-family:var(--mono);
+
+  font-size:15px;
+
+  color:var(--gold);
+
+  margin-bottom:22px;
+}
+
+.info-list{
+  border-top:1px solid var(--border);
+}
+
+.info-row{
+  padding:13px 0;
+
+  border-bottom:1px solid var(--border);
+}
+
+.info-label{
+  font-family:var(--mono);
+
+  font-size:10px;
+
+  color:var(--muted);
+
+  text-transform:uppercase;
+
+  margin-bottom:3px;
+}
+
+.info-value{
+  font-size:13px;
+}
+
+.info-value a{
+  color:var(--gold);
+
+  word-break:break-all;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description{
+  max-width:760px;
+
+  margin-top:60px;
+}
+
+.section-label{
+  font-family:var(--mono);
+
+  font-size:11px;
+
+  color:var(--gold);
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+
+  margin-bottom:15px;
+}
+
+.description h2,
+.responsibilities h2{
+  font-family:var(--mono);
+
+  font-size:28px;
+
+  margin-bottom:20px;
+}
+
+.description p{
+  color:var(--muted);
+
+  font-size:14.5px;
+
+  margin-bottom:18px;
+}
+
+
+/* =========================
+   RESPONSIBILITIES
+========================= */
+
+.responsibilities{
+  margin-top:55px;
+}
+
+.responsibility-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+
+  margin-top:20px;
+}
+
+.responsibility{
+  border:1px solid var(--border);
+
+  background:var(--surface);
+
+  padding:17px 18px;
+
+  border-radius:5px;
+}
+
+.responsibility-number{
+  font-family:var(--mono);
+
+  color:var(--gold);
+
+  font-size:11px;
+
+  margin-bottom:7px;
+}
+
+.responsibility h3{
+  font-family:var(--mono);
+
+  font-size:13px;
+
+  margin-bottom:5px;
+}
+
+.responsibility p{
+  color:var(--muted);
+
+  font-size:12px;
+}
+
+
+/* =========================
+   BACK
+========================= */
+
+.bottom-nav{
+  border-top:1px solid var(--border);
+
+  padding:50px 0 80px;
+}
+
+.bottom-nav-inner{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+}
+
+.bottom-nav a{
+  font-family:var(--mono);
+
+  font-size:12px;
+
+  color:var(--muted);
+
+  transition:.2s;
+}
+
+.bottom-nav a:hover{
+  color:var(--gold);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  border-top:1px solid var(--border);
+
+  padding:35px 0;
+}
+
+.copyright{
+  font-family:var(--mono);
+
+  font-size:10.5px;
+
+  color:#555b68;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .wrap{
+    padding:0 20px;
+  }
+
+  .navbar{
+    padding:18px 20px;
+  }
+
+  nav.links{
+    display:none;
+  }
+
+  .project-hero{
+    padding-top:130px;
+    padding-bottom:65px;
+  }
+
+  .project-layout{
+    grid-template-columns:1fr;
+
+    gap:40px;
+
+    padding-bottom:80px;
+  }
+
+  .info-panel{
+    position:static;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .responsibility-grid{
+    grid-template-columns:1fr;
+  }
+
+  .bottom-nav-inner{
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="navbar">
+
+    <a href="index.html" class="logo">
+      BAD<span>.</span>A
+    </a>
+
+    <nav class="links">
+
+      <a href="index.html#home">
+        HOME
+      </a>
+
+      <a href="index.html#about">
+        ABOUT
+      </a>
+
+      <a href="index.html#portfolio">
+        PORTFOLIO
+      </a>
+
+      <a href="index.html#resume">
+        RESUME
+      </a>
+
+    </nav>
+
+    <a href="index.html#portfolio" class="back-btn">
+      ← PORTFOLIO
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================
+     PROJECT HERO
+========================= -->
+
+<section class="project-hero wrap">
+
+  <div class="eyebrow">
+    PORTFOLIO / NETWORK PROGRAMMING
+  </div>
+
+  <h1>
+    Lag Compensation
+  </h1>
+
+  <p class="project-subtitle">
+    Unreal Engine 5 기반 Server-Side Rewind / SubTick 유사 지연 보상 시스템
+  </p>
+
+  <div class="project-meta">
+
+    <span class="meta-tag">
+      C++
+    </span>
+
+    <span class="meta-tag">
+      Unreal Engine 5
+    </span>
+
+    <span class="meta-tag">
+      Multiplayer
+    </span>
+
+    <span class="meta-tag">
+      Network Programming
+    </span>
+
+    <span class="meta-tag">
+      Server-Side Rewind
+    </span>
+
+    <span class="meta-tag">
+      SubTick
+    </span>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECT CONTENT
+========================= -->
+
+<section class="wrap project-layout">
+
+
+<!-- LEFT -->
+
+<div>
+
+
+  <!-- MEDIA -->
+
+  <div class="media-section">
+
+    <div class="main-video">
+
+      <iframe
+        src="https://www.youtube.com/embed/U14OPQn30Ww"
+        title="Lag Compensation Demo"
+        allow="autoplay"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+
+    <!-- IMAGE GALLERY -->
+
+    <div class="gallery">
+        <div class="gallery-item">
+
+            <img src="assets/img/Prototype/LagCompensation/NoLagCompensation.png"
+                 alt="Lag Compensation Demo">
+
+        </div>
+
+        <div class="gallery-item">
+
+            <img src="assets/img/Prototype/LagCompensation/LagCompensation.png"
+                 alt="Lag Compensation Demo">
+
+        </div>
+
+
+        <div class="gallery-item">
+
+            <img src="assets/img/Prototype/LagCompensation/Character.png"
+                 alt="Character">
+
+        </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DESCRIPTION -->
+
+  <div class="description">
+
+    <div class="section-label">
+      // 01 — OVERVIEW
+    </div>
+
+    <h2>
+      Server-Side Rewind
+    </h2>
+
+    <p>
+      Lag Compensation은 멀티플레이 FPS에서 네트워크 지연으로 인해
+      발생하는 사격 판정 문제를 해결하기 위해 제작한
+      Server-Side Rewind 기반 지연 보상 시스템입니다.
+    </p>
+
+    <p>
+      클라이언트가 사격한 시점의 서버 시간을 함께 전송하고,
+      서버는 해당 시간의 과거 액터 위치를 복원한 뒤
+      충돌 판정을 수행하고 다시 현재 위치로 복구합니다.
+    </p>
+
+    <p>
+      특히 Unreal Engine의 서버-클라이언트 구조를 기반으로
+      프레임별 Transform 데이터를 기록하고,
+      사격 시점의 앞뒤 프레임을 보간하여 원하는 시점의
+      위치와 회전값을 계산하도록 구현했습니다.
+    </p>
+
+    <p>
+      이 방식은 Counter-Strike의 SubTick과 유사하게
+      서버의 특정 프레임에 양자화된 위치만 사용하는 것이 아니라
+      두 프레임 사이의 값을 보간하여 보다 정확한 사격 시점을
+      계산하는 것을 목표로 합니다.
+    </p>
+
+  </div>
+
+
+  <!-- RESPONSIBILITIES -->
+
+  <div class="responsibilities">
+
+    <div class="section-label">
+      // 02 — IMPLEMENTATION
+    </div>
+
+    <h2>
+      What I Worked On
+    </h2>
+
+
+    <div class="responsibility-grid">
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          01
+        </div>
+
+        <h3>
+          Frame Snapshot
+        </h3>
+
+        <p>
+          액터의 위치, 회전 및 타임스탬프를 프레임 단위로
+          저장하는 Snapshot 구조 구현
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          02
+        </div>
+
+        <h3>
+          Frame History
+        </h3>
+
+        <p>
+          서버에서 움직이는 액터의 과거 Transform을 일정 시간 동안
+          기록하고 오래된 데이터를 자동으로 제거
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          03
+        </div>
+
+        <h3>
+          SubTick Interpolation
+        </h3>
+
+        <p>
+          사격 시점의 앞뒤 프레임을 검색하고 두 Transform 사이를
+          보간하여 정확한 Target Time의 위치를 계산
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          04
+        </div>
+
+        <h3>
+          Server-Side Rewind
+        </h3>
+
+        <p>
+          서버에서 모든 등록된 움직이는 액터를 과거 사격 시점으로
+          되돌린 후 충돌 판정을 수행
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          05
+        </div>
+
+        <h3>
+          Actor Restore
+        </h3>
+
+        <p>
+          충돌 판정이 끝난 후 액터들의 위치와 회전을
+          현재 시점으로 복구
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          06
+        </div>
+
+        <h3>
+          Server RPC
+        </h3>
+
+        <p>
+          클라이언트의 사격 정보를 Server Reliable RPC를 통해
+          서버로 전달하고 서버에서 실제 판정을 수행
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          07
+        </div>
+
+        <h3>
+          Network Authority
+        </h3>
+
+        <p>
+          과거 위치 기록과 되감기 판정을 서버에서만 수행하도록
+          Authority를 기준으로 로직을 분리
+        </p>
+
+      </div>
+
+
+      <div class="responsibility">
+
+        <div class="responsibility-number">
+          08
+        </div>
+
+        <h3>
+          Debug Visualization
+        </h3>
+
+        <p>
+          과거 위치와 현재 위치를 디버그 캡슐 및 구로 표시하여
+          네트워크 지연과 Rewind 결과를 시각적으로 확인
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- TECHNICAL DETAILS -->
+
+  <div class="description">
+
+    <div class="section-label">
+      // 03 — TECHNICAL DETAILS
+    </div>
+
+    <h2>
+      How It Works
+    </h2>
+
+    <p>
+      서버에서는 Lag Compensation Component가 매 Tick마다
+      액터의 현재 위치와 회전을 FFrameSnapshot으로 저장합니다.
+      테스트 프로젝트에서는 최대 1초의 기록을 유지하도록 구성했습니다.
+    </p>
+
+    <p>
+      클라이언트가 사격하면 현재 서버 시간을 FireTime으로 함께
+      전송합니다. 서버는 이 시간을 기준으로 History에서
+      FireTime보다 이전과 이후에 존재하는 두 프레임을 검색합니다.
+    </p>
+
+    <p>
+      이후 두 프레임의 Transform을 Linear Interpolation하여
+      실제 사격 시점의 위치와 회전을 계산합니다.
+      이를 통해 서버 Tick 사이에서 발생한 사격도 보다 정확하게
+      판정할 수 있도록 구현했습니다.
+    </p>
+
+    <p>
+      계산된 과거 Transform을 이용해 서버의 액터들을
+      과거 상태로 되돌린 다음 Line Trace를 수행하고,
+      판정이 끝나면 다시 현재 Transform으로 복구합니다.
+    </p>
+
+  </div>
+
+
+  <!-- DESIGN -->
+
+  <div class="description">
+
+    <div class="section-label">
+      // 04 — DESIGN
+    </div>
+
+    <h2>
+      Network Design
+    </h2>
+
+    <p>
+      되감기 기능을 담당하는 GameMode와 개별 액터의
+      과거 데이터를 관리하는 Lag Compensation Component를
+      분리했습니다.
+    </p>
+
+    <p>
+      또한 Interface를 사용하여 GameMode가 특정 Character
+      구현에 직접 의존하지 않도록 구성했습니다.
+      이를 통해 캐릭터뿐만 아니라 추후 다른 움직이는 액터에도
+      동일한 Lag Compensation 시스템을 적용할 수 있습니다.
+    </p>
+
+    <p>
+      테스트 편의를 위해 캐릭터가 일정한 거리만큼 왕복 이동하도록
+      Auto Move 기능을 추가했으며, 네트워크 지연을 의도적으로
+      증가시켜 일반적인 충돌 판정과 Rewind 판정의 차이를
+      확인할 수 있도록 구성했습니다.
+    </p>
+
+  </div>
+
+
+  <!-- FUTURE -->
+
+  <div class="description">
+
+    <div class="section-label">
+      // 05 — IMPROVEMENT
+    </div>
+
+    <h2>
+      Further Improvements
+    </h2>
+
+    <p>
+      현재 구현은 단순한 액터 Transform을 기준으로 테스트한
+      프로토타입입니다. 실제 캐릭터와 애니메이션이 적용된 게임에서는
+      각 캐릭터의 본에 연결된 Collision Transform까지 기록하여
+      보다 정확한 Hitbox Rewind 시스템으로 확장할 수 있습니다.
+    </p>
+
+    <p>
+      다만 모든 본의 Transform을 매 Tick마다 기록할 경우
+      메모리 사용량과 서버 연산량이 증가하기 때문에
+      필요한 Collision 데이터만 저장하는 방식으로 최적화할 필요가 있습니다.
+    </p>
+
+    <p>
+      또한 클라이언트에서는 과거 데이터를 저장할 필요가 없기 때문에
+      Authority가 없는 경우 Component Tick을 비활성화하는 방식으로
+      추가적인 최적화가 가능합니다.
+    </p>
+
+  </div>
+
+
+</div>
+
+
+<!-- RIGHT -->
+
+<aside class="info-panel">
+
+  <h2>
+    PROJECT INFORMATION
+  </h2>
+
+  <div class="info-list">
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Category
+          </div>
+
+          <div class="info-value">
+              Prototype
+          </div>
+
+      </div>
+
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Date
+          </div>
+
+          <div class="info-value">
+              2026년 6월 26일
+          </div>
+
+      </div>
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Duration
+          </div>
+
+          <div class="info-value">
+              1개월
+          </div>
+
+      </div>
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Team
+          </div>
+
+          <div class="info-value">
+              1인개발
+          </div>
+
+      </div>
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Position
+          </div>
+
+          <div class="info-value">
+              Programmer
+          </div>
+
+      </div>
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Engine
+          </div>
+
+          <div class="info-value">
+              Unreal Engine 5.8
+          </div>
+
+      </div>
+
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Language
+          </div>
+
+          <div class="info-value">
+              C++
+          </div>
+
+      </div>
+
+
+      
+      <div class="info-row">
+
+          <div class="info-label">
+              Repository
+          </div>
+
+          <div class="info-value">
+
+              <a href="https://github.com/BusanBADA/Unreal-Subtick-Demo"
+                 target="_blank"
+                 rel="noopener noreferrer">
+
+                  GitHub Repository →
+
+              </a>
+
+          </div>
+
+      </div>
+
+      <div class="info-row">
+
+          <div class="info-label">
+              Blog
+          </div>
+
+          <div class="info-value">
+
+              <a href="https://blog.naver.com/wyoung0227/224327543004"
+                 target="_blank"
+                 rel="noopener noreferrer">
+
+                  Blog →
+
+              </a>
+
+          </div>
+
+      </div>
+  </div>
+
+</aside>
+
+
+</section>
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+
+<section class="bottom-nav">
+
+  <div class="wrap bottom-nav-inner">
+
+    <a href="index.html#portfolio">
+      ← Back to Portfolio
+    </a>
+
+    <a href="index.html">
+      Home ↑
+    </a>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <div class="wrap">
+
+    <div class="copyright">
+
+      © 2026 Jang WooYoung — Game Developer Portfolio
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================
+     IMAGE LIGHTBOX
+========================= -->
+
+<div class="lightbox" id="lightbox">
+
+  <span class="lightbox-close" id="lightboxClose">
+    ×
+  </span>
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="">
+
+</div>
+
+
+<script>
+
+const galleryImages =
+  document.querySelectorAll('.gallery-item img');
+
+const lightbox =
+  document.getElementById('lightbox');
+
+const lightboxImage =
+  document.getElementById('lightboxImage');
+
+const lightboxClose =
+  document.getElementById('lightboxClose');
+
+
+galleryImages.forEach(img => {
+
+  img.addEventListener('click', () => {
+
+    lightboxImage.src = img.src;
+
+    lightboxImage.alt = img.alt;
+
+    lightbox.classList.add('active');
+
+    document.body.style.overflow = 'hidden';
+
+  });
+
+});
+
+
+lightboxClose.addEventListener(
+  'click',
+  closeLightbox
+);
+
+
+lightbox.addEventListener('click', event => {
+
+  if(
+    event.target === lightbox ||
+    event.target === lightboxImage
+  ){
+
+    closeLightbox();
+
+  }
+
+});
+
+
+document.addEventListener('keydown', event => {
+
+  if(event.key === 'Escape'){
+
+    closeLightbox();
+
+  }
+
+});
+
+
+function closeLightbox(){
+
+  lightbox.classList.remove('active');
+
+  document.body.style.overflow = '';
+
+}
+
+</script>
+
+
+</body>
+</html>
